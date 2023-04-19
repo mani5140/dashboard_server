@@ -21,6 +21,11 @@ const lineSchema = mongoose.Schema({
 const pieModel = mongoose.model("piecharts",pieSchema);
 const lineModel = mongoose.model("linecharts",lineSchema);
 
+app.get("/",(req,res) => {
+res.setHeader("Access-Control-Allow-Credentials","true");
+res.send("API is running..");
+});
+
 app.get("/piechart", async(req,res) => {
     let data = await pieModel.find();
     res.send(data);
